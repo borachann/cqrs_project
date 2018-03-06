@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;parameter&quot;}">
+ <meta name="vaadin-version" content="8.0.5">
+</head>
+<body>
+<vaadin-css-layout width-full itemtype="com.project.parameter.domain.model.Bank">
+ <vaadin-css-layout style-name="layout-ghost-white" width-full height="48px">
+  <vaadin-label style-name="title-label" plain-text>
+   Bank
+  </vaadin-label>
+ </vaadin-css-layout>
+ <vaadin-horizontal-layout style-name="layout-white" width-full margin>
+  <vaadin-vertical-layout margin="false" :expand>
+   <vaadin-text-field caption="Bank" width-full _id="bankTextField"></vaadin-text-field>
+   <vaadin-button icon="fonticon://Vaadin-Icons/e929" enabled="false" style-name="add-button borderless" width="33.79%" plain-text _id="addButton">
+    Add
+   </vaadin-button>
+  </vaadin-vertical-layout>
+  <vaadin-grid style-name="parameter-grid" width-full height="189px" data-item-type="com.project.parameter.domain.model.Bank" _id="bankGrid" :expand>
+   <table>
+    <colgroup>
+     <col column-id="name" sortable>
+     <col column-id="recordStatus" sortable>
+    </colgroup>
+    <thead>
+    <tr default>
+     <th plain-text column-ids="name">Name</th>
+     <th plain-text column-ids="recordStatus">Status</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+   </table>
+  </vaadin-grid>
+ </vaadin-horizontal-layout>
+</vaadin-css-layout>
+</body>
+</html>

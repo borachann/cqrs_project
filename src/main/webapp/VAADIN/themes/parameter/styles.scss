@@ -1,0 +1,144 @@
+@import "parameter";
+
+// This file prefixes all rules with the theme name to avoid causing conflicts with other themes.
+// The actual styles should be defined in mytheme.scss
+
+.parameter {
+  @include parameter;
+}
+
+.v-scrollable {
+  background-color: #f2f4f9;
+}
+
+.header {
+  height: 60px;
+  width: 1400px;
+  background-color: #4CAF50;
+}
+.header-content {
+  padding: 0% 13%;
+}
+
+.menu-application .v-menubar-menuitem, .menu-profile .v-menubar-menuitem {
+  padding-top: 10px !important;
+}
+
+.menu-profile .parameter .v-menubar > .v-menubar-menuitem-selected {
+  background-image: none;
+  background-color: #3B5998;
+}
+
+.parameter .v-menubar-borderless .v-menubar-menuitem {
+  color: white !important;
+}
+
+.parameter .v-menubar > .v-menubar-menuitem-selected {
+  background-image: none !important;
+  background-color: #4CAF50 !important;
+}
+
+.parameter .v-menubar-popup .v-menubar-menuitem-selected{
+  background-image: none !important;
+  background-color: #4CAF50 !important;
+}
+
+.parameter .v-menubar-borderless .v-menubar-menuitem:hover {
+  background-image: none !important;
+  color: black !important;
+}
+
+.parameter .v-menubar-popup .v-menubar-menuitem {
+  width: 106px !important;
+  text-align: center !important;
+}
+
+.logo {
+  margin-top: 10px;
+  width: 50px;
+  height: 41.67px;
+  margin-left: -20px;
+  cursor: pointer;
+}
+
+.pull-right {
+  float: right;
+}
+
+.wrapper-body {
+  background-color: #F2F4F9;
+  height: auto;
+}
+
+.wrapper-container {
+  width: 74% !important;
+  margin: 0 auto;
+  display: block;
+  padding-top: 20px;
+}
+
+.layout-white{
+  background-color: white;
+}
+
+.layout-ghost-white{
+  background-color: #FBFCFF;
+}
+
+.title-label{
+  color: #3B5998;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 21px;
+  margin-left: 35px;
+  margin-top: 15px;
+}
+
+.parameter-grid .v-grid-column-header-content, .csf .v-grid-column-footer-content {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: baseline;
+  background-color: #F2F4F9;
+  border-color: #F2F4F9;
+  text-align: center;
+  color: #606060;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 37px;
+}
+
+.parameter-grid .v-grid-row > td{
+  background-color: white;
+}
+
+.parameter-grid .v-grid-row > th{
+  background-color: #F2F4F9;
+}
+
+.parameter-grid .v-grid-cell {
+  background-color: #F2F4F9;
+  padding: 0 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  line-height: 37px;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.add-button{
+  background-image: none !important;
+  background-color: #6C7DA2 !important;
+  border-radius: 2px;
+  color: white !important;
+  margin-top: 20px;
+}
+
+//non focus after click on button
+.parameter .v-button:focus:after {
+  border-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 0px rgba(25, 125, 225, 0.5);
+  box-shadow: 0 0 0 0px rgba(25, 125, 225, 0.5);
+}
