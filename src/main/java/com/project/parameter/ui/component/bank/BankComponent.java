@@ -1,4 +1,4 @@
-package com.project.parameter.ui.component;
+package com.project.parameter.ui.component.bank;
 
 import com.project.parameter.common.I18nMessage;
 import com.project.parameter.common.model.ERecordStatus;
@@ -20,7 +20,7 @@ import java.util.Arrays;
  */
 @UIScope
 @SpringComponent
-public class BankComponent extends BankComponentDesign{
+public class BankComponent extends BankComponentDesign {
   private final Binder<Bank> bankBinder;
   private final static String FIELD_NOT_BLANK = "field not blank";
   private final static String FIELD_NAME_ID = "name";

@@ -1,6 +1,6 @@
 package com.project.parameter.ui.viewdisplay;
 
-import com.project.parameter.ui.util.MainMenuBar;
+import com.project.parameter.ui.component.util.MainMenuBar;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.spring.annotation.SpringViewDisplay;

@@ -142,3 +142,16 @@
   -webkit-box-shadow: 0 0 0 0px rgba(25, 125, 225, 0.5);
   box-shadow: 0 0 0 0px rgba(25, 125, 225, 0.5);
 }
+
+.confirm-header {
+  border-radius: 0;
+  background-color: #6C7DA2;
+}
+.confirm-header-label {
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 25px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
