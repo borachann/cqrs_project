@@ -2,7 +2,7 @@ package com.project.parameter.ui.view;
 
 import com.project.parameter.common.I18nMessage;
 import com.project.parameter.dataprovider.BankDataProvider;
-import com.project.parameter.ui.component.BankComponent;
+import com.project.parameter.ui.component.bank.BankComponent;
 import com.project.parameter.ui.viewdeclaration.UIScopeParameterViews;
 import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringComponent;

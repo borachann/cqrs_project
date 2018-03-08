@@ -1,4 +1,4 @@
-package com.project.parameter.ui.util;
+package com.project.parameter.ui.component.util;
 
 import com.project.parameter.ui.viewdeclaration.UIScopeParameterViews;
 import com.vaadin.server.ThemeResource;
