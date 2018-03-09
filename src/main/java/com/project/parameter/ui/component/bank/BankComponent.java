@@ -4,16 +4,19 @@ import com.project.parameter.common.I18nMessage;
 import com.project.parameter.common.model.ERecordStatus;
 import com.project.parameter.dataprovider.BankDataProvider;
 import com.project.parameter.domain.model.Bank;
+import com.project.parameter.ui.component.confirmation.DeleteConfirmationComponent;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.event.ShortcutAction;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.UIScope;
-import com.vaadin.ui.ComboBox;
-import com.vaadin.ui.Grid;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.Arrays;
+import java.util.UUID;
 
 /**
  * Created by p.ly on 3/3/2018.
@@ -21,11 +24,14 @@ import java.util.Arrays;
 @UIScope
 @SpringComponent
 public class BankComponent extends BankComponentDesign {
+  private final Logger logger = LoggerFactory.getLogger(BankComponent.class);
+
   private final Binder<Bank> bankBinder;
   private final static String FIELD_NOT_BLANK = "field not blank";
   private final static String FIELD_NAME_ID = "name";
   private final static String FIELD_STATUS_ID = "recordStatus";
   private final static String PROPERTY_NAME = "name";
+  private final static String DELETE_CAPTION = "Delete";
 
   public BankComponent(BankDataProvider bankDataProvider, I18nMessage localizer) {
     bankBinder = initializeBankBinder();
@@ -38,7 +44,8 @@ public class BankComponent extends BankComponentDesign {
     // set Enter key as short cut key
     addButton.setClickShortcut(ShortcutAction.KeyCode.ENTER);
     initGrid(bankDataProvider);
-    setCompoentCaption(localizer);
+    customBankGrid(bankDataProvider, localizer);
+    setComponentCaption(localizer);
   }
 
   private void initGrid(BankDataProvider dataProvider) {
@@ -62,6 +69,22 @@ public class BankComponent extends BankComponentDesign {
     bankGrid.getEditor().addSaveListener(e -> dataProvider.save(e.getBean()));
   }
 
+  private void customBankGrid(BankDataProvider dataProvider, I18nMessage localize) {
+    //Deleted bank item
+    bankGrid.addComponentColumn(event -> {
+      Button deleteButton = createDeleteButton();
+      deleteButton.addClickListener(e -> onDeleteItem(dataProvider, localize, event.getId()));
+      return deleteButton;
+    }).setCaption(DELETE_CAPTION);
+  }
+
+  private Button createDeleteButton() {
+    Button deleteButton = new Button();
+    deleteButton.setStyleName("bank-close-button borderless");
+    deleteButton.setIcon(VaadinIcons.TRASH);
+    return deleteButton;
+  }
+
   private Binder<Bank> initializeBankBinder() {
     Binder<Bank> result = new BeanValidationBinder<>(Bank.class);
     result.forField(bankTextField).asRequired(FIELD_NOT_BLANK).bind(PROPERTY_NAME);
@@ -69,8 +92,36 @@ public class BankComponent extends BankComponentDesign {
     return result;
   }
 
-  private void setCompoentCaption(I18nMessage localizer){
+  private void setComponentCaption(I18nMessage localizer) {
     bankTextField.setCaption(localizer.getMessage("caption.bank"));
     addButton.setCaption(localizer.getMessage("button.add"));
+  }
+
+  private void onDeleteItem(BankDataProvider dataProvider, I18nMessage localize, UUID Id){
+    DeleteConfirmationComponent deleteConfirmationComponent = new DeleteConfirmationComponent(localize);
+    Window popUp = deleteConfirmationComponent.displayConfiguration();
+    deleteConfirmationComponent.setListener(new DeleteConfirmationComponent.DeleteConfirmationEventListener() {
+      @Override
+      public void onClose() {
+        popUp.close();
+      }
+
+      @Override
+      public void onYes() {
+        try {
+          dataProvider.delete(Id);
+        } catch (Exception ex) {
+          logger.error("Error while deleting loan purpose", ex);
+        }
+        popUp.close();
+      }
+
+      @Override
+      public void onNo() {
+        popUp.close();
+      }
+    });
+    popUp.setContent(deleteConfirmationComponent);
+    UI.getCurrent().addWindow(popUp);
   }
 }

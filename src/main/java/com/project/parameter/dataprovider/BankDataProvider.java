@@ -7,6 +7,7 @@ import com.vaadin.data.provider.Query;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
+import java.util.UUID;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -34,6 +35,11 @@ public class BankDataProvider extends AbstractBackEndDataProvider<Bank, String>{
 
   public void save(Bank bean){
     repository.save(bean);
+    refreshAll();
+  }
+
+  public void delete(UUID Id){
+    repository.delete(Id);
     refreshAll();
   }
 }

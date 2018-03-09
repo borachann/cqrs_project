@@ -12637,3 +12637,44 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-box-shadow: 0 0 0 0px rgba(25, 125, 225, 0.5);
 	box-shadow: 0 0 0 0px rgba(25, 125, 225, 0.5);
 }
+
+.confirm-header {
+	border-radius: 0;
+	background-color: #6C7DA2;
+}
+
+.confirm-header-label {
+	color: white;
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 25px;
+	margin-left: 20px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.confirm-body-label {
+	color: black;
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 25px;
+	margin-left: 20px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.confirm-close-header-button {
+	float: right;
+	color: white !important;
+	background-image: none !important;
+	margin-top: -70px !important;
+}
+
+.bank-close-button {
+	color: #181818 !important;
+	background-image: none !important;
+}
+
+.parameter .v-window-contents > .v-scrollable:before {
+	content: none !important;
+}

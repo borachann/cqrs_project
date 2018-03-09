@@ -1,9 +1,6 @@
 package com.project.parameter.config.jersey;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
@@ -16,7 +13,6 @@ import org.springframework.context.annotation.ClassPathScanningCandidateComponen
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.util.ClassUtils;
-import org.zalando.jackson.datatype.money.MoneyModule;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.ApplicationPath;
@@ -59,16 +55,6 @@ public class JerseyConfig extends ResourceConfig {
     this.register(WadlResource.class);
   }
 
-  private static ObjectMapper createDefaultMapper() {
-    final ObjectMapper result = new ObjectMapper();
-    result.enable(SerializationFeature.INDENT_OUTPUT);
-    result.registerModule(new JavaTimeModule());
-    result.registerModule(new MoneyModule());
-    result.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-    result.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-    return result;
-  }
-
   private void configureSwagger() {
     this.register(ApiListingResource.class);
     this.register(SwaggerSerializers.class);
@@ -83,10 +69,4 @@ public class JerseyConfig extends ResourceConfig {
     config.setPrettyPrint(true);
     config.setScan(true);
   }
-
-  @Bean
-  ObjectMapper objectMapper() {
-    return createDefaultMapper();
-  }
-
 }
