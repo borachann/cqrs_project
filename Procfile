@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar  
+web: java $JVM_OPTS -cp target/flashcards.jar clojure.main -m flashcards.server
